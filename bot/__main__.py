@@ -36,16 +36,16 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>Bot Uptime:</b> {currentTime}\n' \
+    stats = f'<b>Bot Uptime ⌚:</b> {currentTime}\n' \
             f'<b>Start Time:</b> {current}\n' \
-            f'<b>Total Disk Space:</b> {total}\n' \
-            f'<b>Used:</b> {used}  ' \
-            f'<b>Free:</b> {free}\n\n' \
-            f'📊Data Usage📊\n<b>Upload:</b> {sent}\n' \
-            f'<b>Download:</b> {recv}\n\n' \
-            f'<b>CPU:</b> {cpuUsage}%\n' \
-            f'<b>RAM:</b> {memory}%\n' \
-            f'<b>DISK:</b> {disk}%'
+            f'<b>Total disk space🗄️:</b> {total}\n' \
+            f'<b>Used 🗃️:</b> {used}  ' \
+            f'<b>kosong 🗃️:</b> {free}\n\n' \
+            f'📇penggunaan data📇\n<b>Unggah:</b> {sent}\n' \
+            f'<b>Unduh:</b> {recv}\n\n' \
+            f'<b>CPU 🖥️:</b> {cpuUsage}%\n' \
+            f'<b>RAM ⛏️:</b> {memory}%\n' \
+            f'<b>DISK ⛏🗄️:</b> {disk}%'
     update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
 
 
@@ -62,17 +62,17 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         if update.message.chat.type == "private" :
-            sendMessage(f"Hey I'm Alive 🙂", context.bot, update)
+            sendMessage(f"SIAP NDAN 🙂", context.bot, update)
         else :
             update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
     else :
-        sendMessage(f"Oops! not a Authorized user.", context.bot, update)
+        sendMessage(f"Hayo Mau ngapain :V.", context.bot, update)
 
 
 @run_async
 def restart(update, context):
-    restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
-    LOGGER.info(f'Restarting the Bot...')
+    restart_message = sendMessage("Restarting, Tunggu Sebentar!", context.bot, update)
+    LOGGER.info(f'merestart BOT...')
     # Save restart message object in order to reply to it after restarting
     with open(".restartmsg", "w") as f:
         f.truncate(0)
@@ -217,7 +217,7 @@ def main():
     if os.path.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("Bot telah direstart!", chat_id, msg_id)
         os.remove(".restartmsg")
 
     bot.set_my_commands(botcmds)
@@ -239,7 +239,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling()
-    LOGGER.info("Bot Started!")
+    LOGGER.info("Gass Bot URIP!")
     signal.signal(signal.SIGINT, fs_utils.exit_clean_up)
 
 app.start()
