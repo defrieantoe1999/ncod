@@ -31,8 +31,8 @@ class AriaDownloadHelper(DownloadHelper):
             gdrive = GoogleDriveHelper(None)
             smsg, button = gdrive.drive_list(sname)
           if smsg:
-              dl.getListener().onDownloadError(f'File is already available in Drive.\n\n')
-              sendMarkup("Here are the search results:", dl.getListener().bot, dl.getListener().update, button)
+              dl.getListener().onDownloadError(f'😡😡 File nya udh ada di google drive ya, kamu bisa cari dengan mengetik /daftar (yg pengen kamu cari), kamu soam = ban.\n\n')
+              sendMarkup("Nih yang kamu cari:👇", dl.getListener().bot, dl.getListener().update, button)
               aria2.remove([download])
               return
 
