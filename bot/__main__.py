@@ -36,23 +36,23 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>Bot Uptime ⌚:</b> {currentTime}\n' \
-            f'<b>Start Time:</b> {current}\n' \
-            f'<b>Total disk space🗄️:</b> {total}\n' \
-            f'<b>Used 🗃️:</b> {used}  ' \
+    stats = f'<b>⏺️Bot Uptime ⌚:</b> {currentTime}\n' \
+            f'<b>✴️Start Time:</b> {current}\n' \
+            f'<b>📶Total disk space🗄️:</b> {total}\n' \
+            f'<b>📶Used 🗃️:</b> {used}  ' \
             f'<b>kosong 🗃️:</b> {free}\n\n' \
             f'📇penggunaan data📇\n<b>Unggah:</b> {sent}\n' \
             f'<b>Unduh:</b> {recv}\n\n' \
-            f'<b>CPU 🖥️:</b> {cpuUsage}%\n' \
-            f'<b>RAM ⛏️:</b> {memory}%\n' \
-            f'<b>DISK ⛏🗄️:</b> {disk}%'
+            f'<b>♨️CPU 🖥️:</b> {cpuUsage}%\n' \
+            f'<b>💾RAM ⛏️:</b> {memory}%\n' \
+            f'<b>📇DISK 🗄️:</b> {disk}%'
     update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
 
 
 @run_async
 def start(update, context):
     start_string = f'''
-This bot can mirror all your links to Google drive!
+Ini bot bisa mirror link gd/mediafire/zippy/mega Edited By [Akbar Bahtiar](t.me/AlfaniAkB)
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
     buttons = button_build.ButtonMaker()
